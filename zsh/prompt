@@ -1,0 +1,33 @@
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git hg svn cvs
+zstyle ':vcs_info:*'  actionformats "%s" " [%b]" "%a"
+zstyle ':vcs_info:*'  formats       "%s" " [%b]" "%a"
+
+precmd () {
+    vcs_info
+    psvar=()
+    psvar[1]=$vcs_info_msg_0_
+    psvar[2]=$vcs_info_msg_1_
+    psvar[3]=$vcs_info_msg_2_
+    # psvar[4] is used to indicate 'dirty'-status
+    psvar[5]="" # psvar[5] is used to hold extra status from RCS
+
+    if [[ -n $vcs_info_msg_0_ ]]; then
+        if [[ $vcs_info_msg_0_ == 'git' ]]; then
+            if [ "$(git status -s -uno 2>/dev/null)" ]; then
+                psvar[4]='dirty'
+            fi
+            if [ "$(git cherry -v origin/$(git_branch) 2>/dev/null)" ]; then
+              psvar[5] = '+'
+            fi
+        elif [[ $vcs_info_msg_0_ == 'hg' ]]; then
+            if [ "$(hg status 2>/dev/null)" ]; then
+                psvar[4]='dirty'
+            fi
+        fi
+    fi
+}
+
+_rcs_status="%(1V."'${psvar[3]}'" %(4V.%F{red}.)("'${psvar[1]}${psvar[5]}'")%f.)"
+PS1="%F{cyan}%~"'${psvar[2]}'"%#%f "
+RPROMPT="%(2L..${_rcs_status})"

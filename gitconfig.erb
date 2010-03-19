@@ -1,0 +1,19 @@
+[user]
+	name = <%= config[:gitname] %>
+	email = <%= config[:gitmail] %>
+[alias]
+	co = checkout
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	excludesfile = <%= ENV['HOME'] %>/.gitignore
+	editor = mate -w
+[apply]
+	whitespace = nowarn
+[format]
+	pretty = %C(yellow)%h%Creset %s
+[github]
+	user = <%= config[:github_user] %>
+	token = <%= config[:github_token] %>
