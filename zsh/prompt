@@ -1,7 +1,7 @@
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg svn cvs
-zstyle ':vcs_info:*'  actionformats "%s" " [%b]" "%a"
-zstyle ':vcs_info:*'  formats       "%s" " [%b]" "%a"
+zstyle ':vcs_info:*'  actionformats "%s" "%b" "%a"
+zstyle ':vcs_info:*'  formats       "%s" "%b" "%a"
 
 precmd () {
     vcs_info
@@ -18,7 +18,7 @@ precmd () {
                 psvar[4]='dirty'
             fi
             if [ "$(git cherry -v origin/${psvar[2]} 2>/dev/null)" ]; then
-              psvar[5] = '+'
+                psvar[5]='+'
             fi
         elif [[ $vcs_info_msg_0_ == 'hg' ]]; then
             if [ "$(hg status 2>/dev/null)" ]; then
@@ -29,5 +29,5 @@ precmd () {
 }
 
 _rcs_status="%(1V."'${psvar[3]}'" %(4V.%F{red}.)("'${psvar[1]}${psvar[5]}'")%f.)"
-PS1="%F{cyan}%~"'${psvar[2]}'"%#%f "
+PS1="%F{cyan}%~"'%(2V. [${psvar[2]}].)'"%#%f "
 RPROMPT="%(2L..${_rcs_status})"
