@@ -28,6 +28,6 @@ precmd () {
     fi
 }
 
-_rcs_status="%(1V."'${psvar[3]}'" %(4V.%F{red}.)("'${psvar[1]}${psvar[5]}'")%f.)"
-PS1="%F{cyan}%~"'%(2V. [${psvar[2]}].)'"%#%f "
+_rcs_status="%(1V."'${psvar[3]}'" %(4V.%F{red}.)"'${psvar[2]}·${psvar[1]}${psvar[5]}'"%f.)"
+PS1="%F{cyan}%m%f:%F{green}%~%#%f "
 RPROMPT="%(2L..${_rcs_status})"
