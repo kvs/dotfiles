@@ -1,5 +1,7 @@
 # misc
 alias e='edit'
+alias hexedit='open -a "Hex Fiend"'
+alias locate='mdfind -name'
 
 # git
 alias gl='git pull'
