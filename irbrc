@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'irb/completion'
 require 'irb/ext/save-history'
-%w[rubygems looksee/shortcuts].each { |gem| require gem rescue nil }
+%w[ap looksee/shortcuts].each { |gem| require gem rescue nil }
 
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
