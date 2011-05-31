@@ -1,0 +1,5 @@
+if [[ -n $TMUX ]]; then
+    echo -e $'\ePtmux;\e\e]9;'${1}'\007\e\\'
+else
+    echo -e $'\e]9;'${1}'\007'
+fi
