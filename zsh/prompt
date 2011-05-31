@@ -4,30 +4,31 @@ zstyle ':vcs_info:*'  actionformats "%s" "%b" "%a"
 zstyle ':vcs_info:*'  formats       "%s" "%b" "%a"
 
 precmd () {
-    vcs_info
-    psvar=()
-    psvar[1]=$vcs_info_msg_0_ # rcs
-    psvar[2]=$vcs_info_msg_1_ # branch
-    psvar[3]=$vcs_info_msg_2_ # 'action'
-    # psvar[4] is used to indicate 'dirty'-status
-    psvar[5]="" # psvar[5] is used to hold extra status from RCS
+    if [[ -n $TMUX ]]; then
+        vcs_info
 
-    if [[ -n $vcs_info_msg_0_ ]]; then
-        if [[ $vcs_info_msg_0_ == 'git' ]]; then
-            if [ "$(git status -s -uno 2>/dev/null)" ]; then
-                psvar[4]='dirty'
+        statusline=''
+        color='green'
+        if [[ -n $vcs_info_msg_0_ ]]; then
+            statusline=$vcs_info_msg_0_
+            if [[ $vcs_info_msg_0_ == 'git' ]]; then
+                if [ "$(git status -s -uno 2>/dev/null)" ]; then
+                    color='red'
+                fi
+                if [ "$(git cherry -v origin/${psvar[2]} 2>/dev/null)" ]; then
+                    statusline="${statusline}+"
+                fi
+            elif [[ $vcs_info_msg_0_ == 'hg' ]]; then
+                if [ "$(hg status 2>/dev/null)" ]; then
+                    color='red'
+                fi
             fi
-            if [ "$(git cherry -v origin/${psvar[2]} 2>/dev/null)" ]; then
-                psvar[5]='+'
-            fi
-        elif [[ $vcs_info_msg_0_ == 'hg' ]]; then
-            if [ "$(hg status 2>/dev/null)" ]; then
-                psvar[4]='dirty'
-            fi
+            statusline="#[fg=${color}]${vcs_info_msg_1_}·${statusline}#[fg=colour8] ● "
         fi
+
+        tmux set status-right "${statusline}#[bold]#T#[default] " > /dev/null
+        printf '\033]2;%s\033' "`whoami`@`hostname -s`"
     fi
 }
 
-_rcs_status="%(1V."'${psvar[3]}'" %(4V.%F{red}.)"'${psvar[2]}·${psvar[1]}${psvar[5]}'"%f.)"
 PS1="%F{cyan}%m%f:%F{green}%~%#%f "
-RPROMPT="%(2L..${_rcs_status})"
