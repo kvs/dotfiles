@@ -3,6 +3,7 @@
 . ~/.zsh/completion
 . ~/.zsh/prompt
 . ~/.rvm/scripts/rvm
+. ~/.perlbrew/etc/bashrc
 
 # use .localrc for settings specific to one system
 [[ -f ~/.localrc ]] && .  ~/.localrc
