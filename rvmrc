@@ -1,2 +1,0 @@
-rvm_make_flags="-j 4"
-export rvm_path="/Users/kenneth/.rvm"
