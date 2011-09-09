@@ -6,7 +6,7 @@ desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
   Dir['*'].each do |file|
-    next if %w[Rakefile README.markdown].include? file
+    next if %w[Rakefile README.markdown OSXSetup].include? file
     
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
       if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
@@ -31,6 +31,8 @@ task :install do
       link_file(file)
     end
   end
+
+  system "sh ./OSXSetup"
 end
 
 def replace_file(file)

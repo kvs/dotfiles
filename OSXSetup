@@ -1,0 +1,58 @@
+#!/bin/sh
+# Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.osx
+
+# Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Disable menu bar transparency
+defaults write -g AppleEnableMenuBarTransparency -bool false
+
+# Expand save panel by default
+defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
+
+# Expand print panel by default
+defaults write -g PMPrintingExpandedStateForPrint -bool true
+
+# Disable shadow in screenshots
+defaults write com.apple.screencapture disable-shadow -bool true
+
+# Write JPGs on screen grab
+defaults write com.apple.screencapture type -string JPG
+
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Automatically open a new Finder window when a volume is mounted
+defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+
+# Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# Disable Safari’s thumbnail cache for History and Top Sites
+defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+
+# Enable Safari’s debug menu
+defaults write com.apple.Safari IncludeDebugMenu -bool true
+
+# Always show tab bar
+defaults write com.apple.Safari AlwaysShowTabBar -boolean true
+
+# Disable send and reply animations in Mail.app
+defaults write com.apple.Mail DisableReplyAnimations -bool true
+defaults write com.apple.Mail DisableSendAnimations -bool true
+
+# Fix for the ancient UTF-8 bug in QuickLook (http://mths.be/bbo)
+echo "0x08000100:0" > ~/.CFUserTextEncoding
+
+# Hide iTunes Store arrow links
+defaults write com.apple.iTunes show-store-arrow-links -bool FALSE
+
+# Hide iTunes Ping dropdown
+defaults write com.apple.iTunes hide-ping-dropdown -bool TRUE
+
+# Reset Launchpad
+rm ~/Library/Application\ Support/Dock/*.db
+
+# Kill affected applications
+for app in Safari Finder Dock Mail; do killall "$app"; done
