@@ -13,6 +13,8 @@ REPORTTIME=10 # print elapsed time when more than 10 seconds
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;36'
 
+export LESS='-R'
+
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP
 setopt NO_LIST_BEEP
