@@ -2,7 +2,7 @@
 . ~/.zsh/aliases
 . ~/.zsh/completion
 . ~/.zsh/prompt
-. ~/.perlbrew/etc/bashrc
+[[ -f ~/.perlbrew/etc/bashrc ]] && . ~/.perlbrew/etc/bashrc
 
 eval "$(rbenv init -)"
 
