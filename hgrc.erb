@@ -1,0 +1,16 @@
+[extensions]
+rebase =
+churn =
+transplant =
+color = 
+record = 
+convert = 
+progress =
+mq = 
+
+[ui]
+username = <%= config[:gitname] + ' ' + config[:gitmail] %>
+ignore = ~/.hgignore
+
+[defaults]
+pull = --rebase
