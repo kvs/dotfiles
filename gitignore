@@ -3,3 +3,5 @@
 *~
 .*.swp
 .bundle
+*.sublime-project
+*.sublime-workspace
