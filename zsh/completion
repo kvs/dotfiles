@@ -9,3 +9,8 @@ zstyle ':completion:*' insert-tab pending
 
 # show full commands for tmux
 zstyle ':completion:*:*:tmux:*:subcommands' mode 'commands'
+
+# hosts-completion based on a directory of files matching hostnames
+if [ -d ~/pepsi/ ]; then
+	zstyle ':completion:*:*:*:hosts' hosts $(find ~/pepsi/etc/hosts ~/pepsi/etc/devices -type f | egrep -o '[^/]+$')
+fi
