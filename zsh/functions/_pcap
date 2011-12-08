@@ -1,0 +1,25 @@
+#compdef pcap
+
+# pcap <project-name> <cap-options>
+#
+# The Capistrano-completer could be (much) better
+
+if [ -d /home/drift/.deploy ]; then
+	local -a deploydir
+	local -a projects
+
+	deploydir="/home/drift/.deploy"
+	projects=(`ls -1 $deploydir/cache/ | sed s.:./.`)
+
+	if (( CURRENT == 2 )); then
+		compadd -a projects
+	elif (( CURRENT > 2 )); then
+		local -a capfile
+		capfile=${deploydir}/cache/${words[2]/\//:}/Capfile
+		if [ -f $capfile ]; then
+			local -a captasks
+			captasks=(`cap -f $capfile --tasks | grep '#' | cut -d " " -f 2`)
+			compadd -a -X "Capistrano tasks" captasks
+		fi
+	fi
+fi
