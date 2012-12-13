@@ -1,4 +1,4 @@
-export EDITOR=~/bin/edit
+export EDITOR='subl -w'
 
 fpath=(~/.zsh/functions $fpath)
 

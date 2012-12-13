@@ -1,5 +1,6 @@
 # misc
-alias e='edit'
+alias e='subl -w'
+alias ee='subl'
 alias hexedit='open -a "Hex Fiend"'
 alias locate='mdfind -name'
 
