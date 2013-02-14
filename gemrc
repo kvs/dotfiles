@@ -1,6 +1,6 @@
 --- 
 :verbose: true
-gem: --no-rdoc
+gem: --no-rdoc --bindir /usr/local/lib/ruby/gems/1.9.1/bin -E
 :update_sources: true
 :sources: 
 - http://rubygems.org
