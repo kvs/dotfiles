@@ -27,3 +27,9 @@ function gb
 	git branch $argv; end
 function gs;
 	git status $argv; end
+
+# Knife
+function kbu
+	knife block use $argv; end
+function kns
+	knife node show $argv; end
