@@ -15,19 +15,21 @@ function fish_prompt
   set last_status $status
 
   # knife-block profile
-  set_color blue
-  printf '%s🔪  ' (basename (readlink ~/.chef/knife.rb) .rb | cut -d - -f 2-)
-  set_color normal
+  echo -n (set_color blue)(basename (readlink ~/.chef/knife.rb) .rb | cut -d - -f 2-)"🔪 "(set_color normal)
 
-  set_color $fish_color_cwd
-  printf '%s' (prompt_pwd)
-  set_color normal
+  # rubies-fish
+  if test $__rubies_active_scope != global
+    echo -n (set_color -o blue) $__rubies_active_version💎"  "(set_color normal)
+  end
 
-  printf '%s' (__fish_git_prompt)
-  set_color $fish_color_cwd
-  printf '%% '
+  # directory
+  echo -n (set_color $fish_color_cwd)(prompt_pwd)(set_color normal)
 
-  set_color normal
+  # git
+  echo -n (__fish_git_prompt)
+
+  # prompt
+  echo -n (set_color $fish_color_cwd)% (set_color normal)
 
   if [ $MC_TMPDIR ]
     pwd >&6 # FIXME, FD 6 isn't necessarily the right one, but mc doesn't seem to init fish_prompt correctly, and it's not exposed anywhere else
