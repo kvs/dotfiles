@@ -4,6 +4,7 @@ set -x PATH /usr/local/bin /usr/local/sbin $HOME/bin $PATH
 . ~/.config/fish/prompt.fish
 . ~/.config/fish/complete-knife.fish
 . ~/.config/fish/solarize.fish
+. ~/.config/fish/fish-watch.fish
 . ~/.config/fish/rubies.fish
 
 set -e fish_greeting
