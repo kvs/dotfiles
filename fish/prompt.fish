@@ -30,9 +30,4 @@ function fish_prompt
 
   # prompt
   echo -n (set_color $fish_color_cwd)% (set_color normal)
-
-  if [ $MC_TMPDIR ]
-    pwd >&6 # FIXME, FD 6 isn't necessarily the right one, but mc doesn't seem to init fish_prompt correctly, and it's not exposed anywhere else
-    kill -STOP %self
-  end
 end
