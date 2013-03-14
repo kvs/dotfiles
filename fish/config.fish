@@ -6,6 +6,7 @@ set -x PATH /usr/local/bin /usr/local/sbin $HOME/bin $PATH
 . ~/.config/fish/solarize.fish
 #. ~/.config/fish/fish-watch.fish
 . ~/.config/fish/rubies.fish
+. ~/.config/fish/env.fish
 . ~/.config/fish/gnupg.fish
 
 set -e fish_greeting
