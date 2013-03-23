@@ -17,3 +17,10 @@ set -x EDITOR 'subl -w'
 set -x GREP_OPTIONS '--color=auto'
 set -x GREP_COLOR '1;36'
 set -x LESS='-R'
+
+# Silly helper-function
+function with-shopify-campfire-key
+	set -x SHOPIFY_CAMPFIRE_KEY (cat ~/.campfire-shopify-operations)
+	eval $argv
+	set -e SHOPIFY_CAMPFIRE_KEY
+end
