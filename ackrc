@@ -3,3 +3,4 @@
 --context=1
 --follow
 --group
+--ignore-dir=.bundle
