@@ -17,7 +17,7 @@ cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
 green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60"
 
 	echo $colors | while read -l x x x x number x x x x r g b x
-		printf "\033]4;%d;rgb:%2.2x/%2.2x/%2.2x\033\a" $number $r $g $b
+		printf "\033]4;%d;rgb:%2.2x/%2.2x/%2.2x\a" $number $r $g $b
 	end
 end
 
