@@ -3,6 +3,8 @@
 	email = <%= config[:gitmail] %>
 [alias]
 	co = checkout
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)%Creset' --abbrev-commit
+	up = "!git remote update -p; git merge --ff-only @{u}"
 [color]
 	diff = auto
 	status = auto
