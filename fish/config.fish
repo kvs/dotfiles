@@ -1,4 +1,5 @@
-set -x PATH /usr/local/bin /usr/local/sbin $HOME/bin $PATH
+set -x GOPATH $HOME/Code/go
+set -x PATH $HOME/bin /usr/local/bin /usr/local/sbin /Library/TeX/texbin $GOPATH/bin $PATH
 
 . ~/.config/fish/aliases.fish
 . ~/.config/fish/prompt.fish
