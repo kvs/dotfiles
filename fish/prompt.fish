@@ -15,6 +15,7 @@ function fish_prompt
   set last_status $status
 
   # knife-block profile
+  # echo -n (set_color blue)(basename (dirname (readlink ~/.chef/knife-block.rb)))"🔪 "(set_color normal)
   echo -n (set_color blue)(basename (readlink ~/.chef/knife.rb) .rb | cut -d - -f 2-)"🔪 "(set_color normal)
 
   # rubies-fish
