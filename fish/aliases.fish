@@ -1,8 +1,8 @@
 # Misc
 function e
-	subl -w $argv; end
+	atom -w $argv; end
 function ee
-	subl $argv; end
+	atom $argv; end
 function hexedit
 	open -a "Hex Fiend" $argv; end
 function locate
