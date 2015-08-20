@@ -21,4 +21,6 @@ green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60"
 	end
 end
 
-solarize
+if status --is-interactive
+  solarize
+end
