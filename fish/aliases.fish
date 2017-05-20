@@ -1,35 +1,18 @@
 # Misc
-function e
-	atom -w $argv; end
-function ee
-	atom $argv; end
-function hexedit
-	open -a "Hex Fiend" $argv; end
-function locate
-	mdfind -name $argv; end
-function sha256
-	openssl sha -sha256 $argv; end
+alias kc=kubectl
+alias e='atom -w'
+alias ee=atom
+alias hexedit='open -a "Hex Fiend"'
+alias locate='mdfind -name'
+alias sha256='openssl sha -sha256'
+alias be='bundle exec'
 
 # Git
-function gl
-	git pull $argv; end
-function gp
-	git push $argv; end
-function gd
-	git diff $argv; end
-function gc
-	git commit $argv; end
-function gca
-	git commit -a $argv; end
-function gco
-	git checkout $argv; end
-function gb
-	git branch $argv; end
-function gs;
-	git status $argv; end
-
-# Knife
-function kbu
-	knife block use $argv; end
-function kns
-	knife node show $argv; end
+alias gl='git pull'
+alias gp='git push'
+alias gd='git diff'
+alias gc='git commit'
+alias gca='git commit -a'
+alias gco='git checkout'
+alias gb='git branch'
+alias gs='git status'
