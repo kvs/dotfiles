@@ -23,6 +23,7 @@ function env
 
 		# Run command if found, or else error out
 		if test $status -eq 0
+			# FIXME: break if $argv contains a ';'
 			eval $argv
 		else
 			echo "env: $argv[1]: No such file or directory"
