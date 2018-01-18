@@ -22,5 +22,7 @@ green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60"
 end
 
 if status --is-interactive
-  solarize
+  if test -z $ATOM_HOME
+    solarize
+  end
 end
