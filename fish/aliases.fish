@@ -1,7 +1,6 @@
 # Misc
 alias kc=kubectl
-alias e='atom -w'
-alias ee=atom
+alias e='edit -w'
 alias hexedit='open -a "Hex Fiend"'
 alias locate='mdfind -name'
 alias sha256='openssl sha -sha256'
